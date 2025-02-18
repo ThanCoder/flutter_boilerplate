@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
-import '../drawers/home_drawer.dart';
 import '../widgets/index.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,7 +12,6 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(appName),
       ),
-      drawer: HomeDrawer(),
       body: const Placeholder(),
     );
   }

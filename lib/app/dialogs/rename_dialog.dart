@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../widgets/t_text_field.dart';
+import '../widgets/index.dart';
 
 class RenameDialog extends StatefulWidget {
   String title;
@@ -15,6 +15,7 @@ class RenameDialog extends StatefulWidget {
   void Function(String text)? onChanged;
   TextInputType? textInputType;
   List<TextInputFormatter>? inputFormatters;
+  String? Function(String text)? onCheckIsError;
 
   RenameDialog({
     super.key,
@@ -29,6 +30,7 @@ class RenameDialog extends StatefulWidget {
     this.onChanged,
     this.inputFormatters,
     this.textInputType,
+    this.onCheckIsError,
   });
 
   @override
@@ -57,6 +59,12 @@ class _RenameDialogState extends State<RenameDialog> {
     } else {
       setState(() {
         errorText = null;
+      });
+    }
+    if (widget.onCheckIsError != null) {
+      final text = widget.onCheckIsError!(value);
+      setState(() {
+        errorText = text;
       });
     }
     if (widget.renameExistsTextList != null) {
@@ -92,6 +100,12 @@ class _RenameDialogState extends State<RenameDialog> {
               controller.selection = TextSelection(
                   baseOffset: 0, extentOffset: controller.text.length);
               isSelectAll = true;
+            }
+          },
+          onSubmitted: (value) {
+            if (errorText == null) {
+              Navigator.pop(context);
+              widget.onSubmit(value);
             }
           },
         ),
