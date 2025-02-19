@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/app/utils/index.dart';
 import 'package:than_pkg/than_pkg.dart';
 import '../constants.dart';
 import '../models/app_config_model.dart';
@@ -41,7 +40,7 @@ Future<void> _initAppConfig() async {
 }
 
 AppConfigModel getConfigFile() {
-  final file = File('${getConfigPath()}/$appConfigFileName');
+  final file = File('${appConfigPathNotifier.value}/$appConfigFileName');
   if (!file.existsSync()) {
     return AppConfigModel();
   }
@@ -49,7 +48,7 @@ AppConfigModel getConfigFile() {
 }
 
 void setConfigFile(AppConfigModel appConfig) {
-  final file = File('${getConfigPath()}/$appConfigFileName');
+  final file = File('${appConfigPathNotifier.value}/$appConfigFileName');
   String data = const JsonEncoder.withIndent('  ').convert(appConfig.toJson());
   file.writeAsStringSync(data);
   appConfigNotifier.value = appConfig;
