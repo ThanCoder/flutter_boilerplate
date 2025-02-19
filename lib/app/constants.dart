@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 const isDebugPrint = false;
 
 //assets
-const defaultIconAssetsPath = 'assets/thancoder_logo.webp';
+const defaultIconAssetsPath = 'assets/logo.webp';
 //version name
 const appVersionName = 'beta-test-1';
 const appName = 'bolierplate';
