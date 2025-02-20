@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-import '../notifiers/app_notifier.dart';
+import '../../notifiers/app_notifier.dart';
 
 T? getRecentDB<T>(String key) {
   T? res;

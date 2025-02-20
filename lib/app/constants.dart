@@ -14,7 +14,6 @@ const androidRootPath = "/storage/emulated/0";
 const appConfigFileName = 'main.config.json';
 const appMainDatabaseName = 'main.db.json';
 const appGenresDatabaseName = 'genres.db.json';
-const appSubNoteDatabaseName = 'subnote.db.json';
 
 final activeColor = Colors.teal[600];
 const dangerColor = Colors.red;

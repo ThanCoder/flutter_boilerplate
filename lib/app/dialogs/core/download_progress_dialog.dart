@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
-import '../services/index.dart';
-import '../utils/index.dart';
+import '../../constants.dart';
+import '../../services/index.dart';
+import '../../utils/index.dart';
 
 class DownloadProgressDialog extends StatefulWidget {
   List<String> pathUrlList;

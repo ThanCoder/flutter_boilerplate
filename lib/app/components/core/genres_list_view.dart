@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/genres_model.dart';
+import '../../models/core/genres_model.dart';
 
 class GenresListView extends StatelessWidget {
   List<GenresModel> genresList;

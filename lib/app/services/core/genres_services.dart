@@ -3,9 +3,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
-import '../models/genres_model.dart';
-import '../utils/path_util.dart';
+import '../../constants.dart';
+import '../../models/core/genres_model.dart';
+import '../../utils/path_util.dart';
 
 
 Future<List<GenresModel>> getGenresList() async {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../dialogs/index.dart';
-import '../models/index.dart';
-import '../widgets/index.dart';
+import '../../dialogs/index.dart';
+import '../../models/index.dart';
+import '../../widgets/index.dart';
 
 
 class GenresComponent extends StatefulWidget {

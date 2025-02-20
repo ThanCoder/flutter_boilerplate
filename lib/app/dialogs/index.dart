@@ -1,4 +1,4 @@
-export './confirm_dialog.dart';
-export './download_progress_dialog.dart';
-export './genres_form_dialog.dart';
-export './rename_dialog.dart';
+export 'core/confirm_dialog.dart';
+export 'core/download_progress_dialog.dart';
+export 'core/genres_form_dialog.dart';
+export 'core/rename_dialog.dart';

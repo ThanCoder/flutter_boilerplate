@@ -3,9 +3,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:than_pkg/than_pkg.dart';
-import '../constants.dart';
-import '../models/app_config_model.dart';
-import '../notifiers/app_notifier.dart';
+import '../../constants.dart';
+import '../../models/core/app_config_model.dart';
+import '../../notifiers/app_notifier.dart';
 
 Future<void> initAppConfigService() async {
   try {
