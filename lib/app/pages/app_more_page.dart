@@ -1,35 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/app/notifiers/app_notifier.dart';
-import 'package:flutter_boilerplate/app/services/index.dart';
-import 'package:package_info_plus/package_info_plus.dart';
+import 'package:than_pkg/than_pkg.dart';
+
+import '../notifiers/app_notifier.dart';
+import '../screens/index.dart';
+import '../services/index.dart';
 import '/app/widgets/index.dart';
 
-class AppMorePage extends StatefulWidget {
+class AppMorePage extends StatelessWidget {
   const AppMorePage({super.key});
-
-  @override
-  State<AppMorePage> createState() => _AppMorePageState();
-}
-
-class _AppMorePageState extends State<AppMorePage> {
-  String version = '';
-  @override
-  void initState() {
-    super.initState();
-    init();
-  }
-
-  void init() async {
-    try {
-      final res = await PackageInfo.fromPlatform();
-      setState(() {
-        version = res.version;
-      });
-      print(res);
-    } catch (e) {
-      debugPrint(e.toString());
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,13 +40,35 @@ class _AppMorePageState extends State<AppMorePage> {
               leading: Icon(Icons.settings),
               title: 'Setting',
               trailing: Icon(Icons.arrow_forward_ios_rounded),
+              onClick: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AppSettingScreen(),
+                  ),
+                );
+              },
             ),
 
             //version
-            ListTileWithDesc(
-              leading: Icon(Icons.cloud_upload_rounded),
-              title: 'Check Version',
-              desc: 'Current Version - $version',
+            FutureBuilder(
+              future: ThanPkg.platform.getPackageInfo(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return TLoader();
+                }
+                if (snapshot.hasError) {
+                  return Text('error');
+                }
+                if (snapshot.hasData && snapshot.data != null) {
+                  return ListTileWithDesc(
+                    leading: Icon(Icons.cloud_upload_rounded),
+                    title: 'Check Version',
+                    desc: 'Current Version - ${snapshot.data!.version}',
+                  );
+                }
+                return Container();
+              },
             ),
           ],
         ),

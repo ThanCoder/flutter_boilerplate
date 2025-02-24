@@ -1,5 +1,6 @@
 export 'core/font_list_wiget.dart';
 export 'core/list_tile_with_desc.dart';
+export 'core/list_tile_with_desc_widget.dart';
 export 'core/my_image_file.dart';
 export 'core/my_image_url.dart';
 export 'core/my_scaffold.dart';

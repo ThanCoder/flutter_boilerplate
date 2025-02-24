@@ -49,6 +49,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
+  cherry_toast:
+    dependency: "direct main"
+    description:
+      name: cherry_toast
+      sha256: "0f7631131696ce774567d0b498c3288b95beebefb620c6d3eeb3a44276a19c41"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.12.0"
   cli_util:
     dependency: transitive
     description:
@@ -289,7 +297,7 @@ packages:
     source: hosted
     version: "1.15.0"
   package_info_plus:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: package_info_plus
       sha256: "67eae327b1b0faf761964a1d2e5d323c797f3799db0e85aa232db8d9e922bc35"
@@ -441,10 +449,10 @@ packages:
     dependency: "direct main"
     description:
       name: than_pkg
-      sha256: "25c30921680742b16c5c4562a2b80657f97ef6eaea6094b999ba4ab5973b4915"
+      sha256: e6becabc57d0813ee6bc07d66f6ca46b62a9ada4d39578fe5ec3c3ef200e7e97
       url: "https://pub.dev"
     source: hosted
-    version: "1.5.3"
+    version: "1.5.4"
   typed_data:
     dependency: transitive
     description:
