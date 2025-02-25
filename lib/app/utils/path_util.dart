@@ -30,7 +30,7 @@ String getDatabaseSourcePath() {
 }
 
 String getCachePath() {
-  String homeDir = createDir('${appConfigPathNotifier.value}/$appName');
+  String homeDir = createDir(appConfigPathNotifier.value);
   return createDir('$homeDir/cache');
 }
 

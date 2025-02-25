@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import '../extensions/index.dart';
 import '../components/index.dart';
 import '../constants.dart';
-import '../dialogs/index.dart';
+import '../dialogs/core/index.dart';
 import '../models/index.dart';
 import '../notifiers/app_notifier.dart';
-import '../services/index.dart';
+import '../services/core/index.dart';
 import '../widgets/index.dart';
 
 class AppSettingScreen extends StatefulWidget {

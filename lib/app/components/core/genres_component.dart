@@ -4,7 +4,6 @@ import '../../dialogs/index.dart';
 import '../../models/index.dart';
 import '../../widgets/index.dart';
 
-
 class GenresComponent extends StatefulWidget {
   String genres;
   void Function(String genres) onChange;
