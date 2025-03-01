@@ -45,6 +45,9 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
           return;
         }
       }
+      //set custom path
+      config.customPath = customPathTextController.text;
+
       //save
       setConfigFile(config);
       appConfigNotifier.value = config;

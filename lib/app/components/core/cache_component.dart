@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/app/components/index.dart';
 
 import '../../dialogs/core/index.dart';
 import '../../services/core/index.dart';
 import '../../utils/index.dart';
 import '../../widgets/index.dart';
+import '../index.dart';
 
 class CacheComponent extends StatefulWidget {
   const CacheComponent({super.key});
