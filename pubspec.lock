@@ -429,14 +429,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.1"
-  t_server:
-    dependency: "direct main"
-    description:
-      name: t_server
-      sha256: "5d3e0f4b9715d826111df2b8c0065f7408380180f6f2578a55d412d66a84e38a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.0"
   term_glyph:
     dependency: transitive
     description:
