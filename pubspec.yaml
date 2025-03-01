@@ -23,13 +23,14 @@ dependencies:
 
 dev_dependencies:
   flutter_launcher_icons: ^0.14.3
-
+  change_app_package_name: ^1.4.0
+  # dart run change_app_package_name:main [com.new.package.name]
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
 
 flutter_launcher_icons:
-  # commmand flutter pub get dart run flutter_launcher_icons
+  # commmand dart run flutter_launcher_icons
   android: "launcher_icon"
   image_path: "assets/logo.webp"
 
