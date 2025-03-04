@@ -16,7 +16,7 @@ class CacheComponent extends StatefulWidget {
 class _CacheComponentState extends State<CacheComponent> {
   @override
   Widget build(BuildContext context) {
-    if (getCacheCount() == 0) {
+    if (CacheServices.instance.getCacheCount() == 0) {
       return SizedBox.shrink();
     }
     return ListTileWithDesc(
@@ -28,10 +28,9 @@ class _CacheComponentState extends State<CacheComponent> {
             submitText: 'Clean',
             onCancel: () {},
             onSubmit: () async {
-              await cleanCache();
+              showMessage(context, 'Cache Cleanning...');
+              await CacheServices.instance.cleanCache();
               setState(() {});
-              if (!mounted) return;
-              showMessage(context, 'Cache Cleaned');
             },
           ),
         );
@@ -39,7 +38,7 @@ class _CacheComponentState extends State<CacheComponent> {
       leading: const Icon(Icons.delete_forever),
       title: 'Clean Cache',
       desc:
-          'Cache - Count:${getCacheCount()} - Size:${getParseFileSize(getCacheSize().toDouble())} ',
+          'Cache - Count:${CacheServices.instance.getCacheCount()} - Size:${AppUtil.instance.getParseFileSize(CacheServices.instance.getCacheSize().toDouble())} ',
     );
   }
 }

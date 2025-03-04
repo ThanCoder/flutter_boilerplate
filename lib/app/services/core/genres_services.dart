@@ -11,7 +11,7 @@ import '../../utils/path_util.dart';
 Future<List<GenresModel>> getGenresList() async {
   List<GenresModel> list = [];
   try {
-    final file = File('${getDatabasePath()}/$appGenresDatabaseName');
+    final file = File('${PathUtil.instance.getDatabasePath()}/$appGenresDatabaseName');
     if (await file.exists()) {
       List<dynamic> resList = jsonDecode(await file.readAsString());
       list = resList.map((map) => GenresModel.fromMap(map)).toList();
@@ -25,7 +25,7 @@ Future<List<GenresModel>> getGenresList() async {
 Future<void> removeGenresList({required String title}) async {
   try {
     List<GenresModel> list = [];
-    final file = File('${getDatabasePath()}/$appGenresDatabaseName');
+    final file = File('${PathUtil.instance.getDatabasePath()}/$appGenresDatabaseName');
     if (await file.exists()) {
       List<dynamic> resList = jsonDecode(await file.readAsString());
       list = resList.map((map) => GenresModel.fromMap(map)).toList();
@@ -42,7 +42,7 @@ Future<void> removeGenresList({required String title}) async {
 Future<void> addGenresList({required GenresModel genres}) async {
   try {
     List<GenresModel> list = [];
-    final file = File('${getDatabasePath()}/$appGenresDatabaseName');
+    final file = File('${PathUtil.instance.getDatabasePath()}/$appGenresDatabaseName');
     if (await file.exists()) {
       List<dynamic> resList = jsonDecode(await file.readAsString());
       list = resList.map((map) => GenresModel.fromMap(map)).toList();

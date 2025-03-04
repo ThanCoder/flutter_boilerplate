@@ -93,7 +93,7 @@ class _DownloadDialogState extends State<DownloadDialog> {
             fileSize == 0
                 ? const SizedBox.shrink()
                 : Text(
-                    '${getParseFileSize(downloadedSize)} / ${getParseFileSize(fileSize)}'),
+                    '${AppUtil.instance.getParseFileSize(downloadedSize)} / ${AppUtil.instance.getParseFileSize(fileSize)}'),
           ],
         ),
       ),
