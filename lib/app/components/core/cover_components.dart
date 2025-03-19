@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:file_picker/file_picker.dart';
+import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
 
 import '../../dialogs/core/index.dart';
@@ -19,6 +19,14 @@ class CoverComponents extends StatefulWidget {
 
 class _CoverComponentsState extends State<CoverComponents> {
   bool isLoading = false;
+  late String imagePath;
+
+  @override
+  void initState() {
+    imagePath = widget.coverPath;
+    super.initState();
+    print('init');
+  }
 
   void _downloadUrl() {
     showDialog(
@@ -58,16 +66,25 @@ class _CoverComponentsState extends State<CoverComponents> {
       setState(() {
         isLoading = true;
       });
-      final res = await FilePicker.platform.pickFiles(
-        dialogTitle: 'Fick Cover',
-        type: FileType.image,
+      final files = await openFiles(
+        acceptedTypeGroups: [
+          XTypeGroup(mimeTypes: [
+            'image/png',
+            'image/jpg',
+            'image/webp',
+            'image/jpeg'
+          ]),
+        ],
       );
-      if (res != null && res.files.isNotEmpty) {
-        final path = res.files.first.path!;
+      if (files.isNotEmpty) {
+        final path = files.first.path;
         final file = File(path);
-        await file.copy(widget.coverPath);
-        //clear image cache
-        clearAndRefreshImage();
+        if (widget.coverPath.isNotEmpty) {
+          await file.copy(widget.coverPath);
+          // clear image cache
+          await clearAndRefreshImage();
+        }
+        imagePath = path;
       }
       setState(() {
         isLoading = false;
@@ -118,7 +135,8 @@ class _CoverComponentsState extends State<CoverComponents> {
           child: isLoading
               ? TLoader()
               : MyImageFile(
-                  path: widget.coverPath,
+                  path: imagePath,
+                  borderRadius: 5,
                 ),
         ),
       ),

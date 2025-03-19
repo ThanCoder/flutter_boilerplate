@@ -19,19 +19,21 @@ class MyImageFile extends StatelessWidget {
     this.fit = BoxFit.cover,
     this.width,
     this.height,
-    this.borderRadius = 0,
+    this.borderRadius = 5,
   });
 
   Widget _getImageWidget() {
     final file = File(path);
     if (file.existsSync()) {
-      // final uniqueKey = file.statSync().modified.millisecondsSinceEpoch;
       return Image.file(
         file,
-        // key: ValueKey<int>(uniqueKey),
         fit: fit,
         width: width,
         height: height,
+        errorBuilder: (context, error, stackTrace) => Image.asset(
+          defaultAssetsPath,
+          fit: fit,
+        ),
       );
     } else {
       return Image.asset(

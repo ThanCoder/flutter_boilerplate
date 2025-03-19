@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
+
 class MyImageUrl extends StatelessWidget {
   String url;
   String defaultAssetsPath;
@@ -16,7 +17,7 @@ class MyImageUrl extends StatelessWidget {
     this.fit = BoxFit.cover,
     this.width,
     this.height,
-    this.borderRadius = 0,
+    this.borderRadius = 5,
   });
 
   Widget _getImageWidget() {
