@@ -6,7 +6,7 @@ const appBrowserProxyHostUrl = 'https://nodebrowser-production.up.railway.app';
 const appForwardProxyHostUrl = 'https://thanproxy-production.up.railway.app';
 
 //assets
-const defaultIconAssetsPath = 'assets/logo.png';
+const defaultIconAssetsPath = 'assets/logo.webp';
 //version name
 const appVersionName = 'beta-test-1';
 const appName = 'bolierplate';

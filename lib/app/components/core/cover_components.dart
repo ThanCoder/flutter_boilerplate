@@ -25,7 +25,6 @@ class _CoverComponentsState extends State<CoverComponents> {
   void initState() {
     imagePath = widget.coverPath;
     super.initState();
-    print('init');
   }
 
   void _downloadUrl() {
@@ -34,7 +33,7 @@ class _CoverComponentsState extends State<CoverComponents> {
       builder: (context) => RenameDialog(
         renameLabelText: Text('Download From Url'),
         submitText: 'Download',
-        renameText: '',
+        text: '',
         onCancel: () {},
         onSubmit: (url) async {
           try {

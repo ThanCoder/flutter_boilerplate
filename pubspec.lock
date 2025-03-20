@@ -505,10 +505,10 @@ packages:
     dependency: "direct main"
     description:
       name: than_pkg
-      sha256: "071e8a053ec568adb97347cba2f0ce4512b1016713151dac9ef2934e8248c15d"
+      sha256: "2fb3433130a2c06f0e378e52c8b73af838001a93bd87af64904d9556189962c9"
       url: "https://pub.dev"
     source: hosted
-    version: "1.6.2"
+    version: "1.6.3"
   typed_data:
     dependency: transitive
     description:
