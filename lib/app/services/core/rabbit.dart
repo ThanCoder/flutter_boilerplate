@@ -372,4 +372,10 @@ class Rabbit {
     }
     return input;
   }
+
+  static String unicodeDecode(String input) {
+  return input.replaceAllMapped(RegExp(r'\\u([0-9A-Fa-f]{4})'), (match) {
+    return String.fromCharCode(int.parse(match.group(1)!, radix: 16));
+  });
+}
 }

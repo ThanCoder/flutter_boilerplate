@@ -34,7 +34,7 @@ class AppUtil {
     return res;
   }
 
-  String getParseFileSize(double size) {
+  String getParseFileSize(double size, {int asFixed = 2}) {
     String res = '';
     int pow = 1024;
     final labels = ['byte', 'KB', 'MB', 'GB', 'TB'];
@@ -44,7 +44,7 @@ class AppUtil {
       i++;
     }
 
-    res = '${size.toStringAsFixed(2)} ${labels[i]}';
+    res = '${size.toStringAsFixed(asFixed)} ${labels[i]}';
 
     return res;
   }
