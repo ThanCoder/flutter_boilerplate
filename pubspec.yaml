@@ -1,7 +1,7 @@
 name: flutter_boilerplate
 description: "Flutter complete setup code."
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
-version: 1.0.0+1
+version: 1.0.1
 
 environment:
   sdk: ^3.6.1
@@ -15,8 +15,10 @@ dependencies:
   file_selector: ^1.0.3
   flutter:
     sdk: flutter
+  flutter_markdown: ^0.7.6+2
   flutter_spinkit: ^5.2.1
   intl: ^0.20.2
+  t_release: ^0.0.4
   than_pkg: ^1.6.5
   timeago: ^3.2.2
   uuid: ^4.5.1

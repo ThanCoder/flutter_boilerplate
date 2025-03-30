@@ -10,7 +10,7 @@ class DownloadDialog extends StatefulWidget {
   String url;
   String message;
   String saveFullPath;
-  void Function(String savedPath) onSuccess;
+  void Function() onSuccess;
   void Function(String msg) onError;
   DownloadDialog({
     super.key,
@@ -54,7 +54,7 @@ class _DownloadDialogState extends State<DownloadDialog> {
           });
         },
       );
-      widget.onSuccess(widget.saveFullPath);
+      widget.onSuccess();
       if (!mounted) return;
       Navigator.pop(context);
     } catch (e) {

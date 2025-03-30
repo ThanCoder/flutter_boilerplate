@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:than_pkg/than_pkg.dart';
+import 'package:flutter_boilerplate/app/release_version_system/release_version_checker_button.dart';
 
 import '../components/index.dart';
 import '../notifiers/app_notifier.dart';
@@ -55,25 +55,7 @@ class AppMorePage extends StatelessWidget {
 
             //version
             const Divider(),
-            FutureBuilder(
-              future: ThanPkg.platform.getPackageInfo(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return TLoader();
-                }
-                if (snapshot.hasError) {
-                  return Text('error');
-                }
-                if (snapshot.hasData && snapshot.data != null) {
-                  return ListTileWithDesc(
-                    leading: Icon(Icons.cloud_upload_rounded),
-                    title: 'Check Version',
-                    desc: 'Current Version - ${snapshot.data!.version}',
-                  );
-                }
-                return Container();
-              },
-            ),
+            ReleaseVersionCheckerButton(),
           ],
         ),
       ),
