@@ -2,8 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-
-import '../../utils/index.dart';
+import '../../extensions/double_extension.dart';
 
 class DownloadDialog extends StatefulWidget {
   String title;
@@ -79,23 +78,22 @@ class _DownloadDialogState extends State<DownloadDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      scrollable: true,
       title: Text(widget.title),
-      content: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 10,
-          children: [
-            Text(widget.message),
-            LinearProgressIndicator(
-              value: fileSize == 0 ? null : downloadedSize / fileSize,
-            ),
-            //label
-            fileSize == 0
-                ? const SizedBox.shrink()
-                : Text(
-                    '${AppUtil.instance.getParseFileSize(downloadedSize)} / ${AppUtil.instance.getParseFileSize(fileSize)}'),
-          ],
-        ),
+      content: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 10,
+        children: [
+          Text(widget.message),
+          LinearProgressIndicator(
+            value: fileSize == 0 ? null : downloadedSize / fileSize,
+          ),
+          //label
+          fileSize == 0
+              ? const SizedBox.shrink()
+              : Text(
+                  '${downloadedSize.toDouble().toFileSizeLabel()} / ${fileSize.toDouble().toFileSizeLabel()}'),
+        ],
       ),
       actions: [
         TextButton(

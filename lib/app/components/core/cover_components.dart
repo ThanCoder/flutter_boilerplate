@@ -41,23 +41,20 @@ class _CoverComponentsState extends State<CoverComponents> {
               isLoading = true;
             });
             await Dio().download(url, widget.coverPath);
-
+            if (!mounted) return;
             setState(() {
               isLoading = false;
             });
           } catch (e) {
+            if (!mounted) return;
             setState(() {
               isLoading = false;
             });
-            _showMsg(e.toString());
+            showDialogMessage(context, e.toString());
           }
         },
       ),
     );
-  }
-
-  void _showMsg(String msg) {
-    showDialogMessage(context, msg);
   }
 
   void _addFromPath() async {
@@ -99,25 +96,30 @@ class _CoverComponentsState extends State<CoverComponents> {
   void _showMenu() {
     showModalBottomSheet(
       context: context,
-      builder: (context) => ListView(
-        children: [
-          ListTile(
-            onTap: () {
-              Navigator.pop(context);
-              _addFromPath();
-            },
-            leading: const Icon(Icons.add),
-            title: const Text('Add From Path'),
+      builder: (context) => SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: 150),
+          child: Column(
+            children: [
+              ListTile(
+                onTap: () {
+                  Navigator.pop(context);
+                  _addFromPath();
+                },
+                leading: const Icon(Icons.add),
+                title: const Text('Add From Path'),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.pop(context);
+                  _downloadUrl();
+                },
+                leading: const Icon(Icons.add),
+                title: const Text('Add From Url'),
+              ),
+            ],
           ),
-          ListTile(
-            onTap: () {
-              Navigator.pop(context);
-              _downloadUrl();
-            },
-            leading: const Icon(Icons.add),
-            title: const Text('Add From Url'),
-          ),
-        ],
+        ),
       ),
     );
   }

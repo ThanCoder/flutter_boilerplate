@@ -5,11 +5,7 @@ import 'package:flutter/material.dart';
 import '../../utils/index.dart';
 
 class CacheServices {
-  static final CacheServices instance = CacheServices._();
-  CacheServices._();
-  factory CacheServices() => instance;
-
-  int getCacheCount() {
+  static int getCacheCount() {
     int res = 0;
     try {
       final dir = Directory(PathUtil.instance.getCachePath());
@@ -21,7 +17,7 @@ class CacheServices {
     return res;
   }
 
-  int getCacheSize() {
+  static int getCacheSize() {
     int res = 0;
     try {
       final dir = Directory(PathUtil.instance.getCachePath());
@@ -36,7 +32,7 @@ class CacheServices {
     return res;
   }
 
-  Future<void> cleanCache() async {
+  static Future<void> cleanCache() async {
     try {
       final dir = Directory(PathUtil.instance.getCachePath());
       final files = dir.list(recursive: true);
