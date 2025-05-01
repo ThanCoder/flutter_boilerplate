@@ -50,6 +50,18 @@ class MapServices {
         return defaultValue;
       }
     }
+    if (T == String && current is int) {
+      current = int.parse(current as String);
+    }
+    if (T == String && current is double) {
+      current = double.parse(current as String);
+    }
+    if (T == int && current is String) {
+      current = int.parse(current);
+    }
+    if (T == double && current is String) {
+      current = double.parse(current);
+    }
     return current is T ? current : defaultValue;
   }
 }

@@ -55,12 +55,9 @@ class MyImageUrl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (borderRadius > 0) {
-      return ClipRRect(
-        borderRadius: BorderRadius.circular(borderRadius),
-        child: _getImageWidget(),
-      );
-    }
-    return _getImageWidget();
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(borderRadius),
+      child: _getImageWidget(),
+    );
   }
 }

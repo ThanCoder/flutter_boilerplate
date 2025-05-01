@@ -12,19 +12,23 @@ class GeneralServices {
   factory GeneralServices() => instance;
 
   String version = '';
+  String packageName = '';
 
-  Future<void> init() async {
+  Future<void> init({required String packageName}) async {
+    this.packageName = packageName;
+    if (this.packageName.isEmpty) throw Exception('packageName is empty');
     final res = await ThanPkg.platform.getPackageInfo();
     version = res.version;
   }
 
   final _dio = Dio(BaseOptions(
-    connectTimeout: const Duration(seconds: 5),
-    sendTimeout: const Duration(seconds: 5),
-    receiveTimeout: const Duration(seconds: 5),
+    connectTimeout: const Duration(seconds: 8),
+    sendTimeout: const Duration(seconds: 8),
+    receiveTimeout: const Duration(seconds: 8),
   ));
 
   Future<List<ReleaseModel>> getReleaseList() async {
+    if (packageName.isEmpty) throw Exception('packageName is empty');
     List<ReleaseModel> list = [];
     try {
       final res = await _dio.get('$serverUrl/release/api');
@@ -65,6 +69,7 @@ class GeneralServices {
   }
 
   Future<ReleaseAppModel?> getReleaseAppLatest() async {
+    if (packageName.isEmpty) throw Exception('packageName is empty');
     try {
       final res = await _dio.get('$serverUrl/release/api/app/$packageName');
       final app = ReleaseAppModel.fromMap(res.data);
@@ -77,7 +82,7 @@ class GeneralServices {
         }
       }
     } catch (e) {
-      debugPrint(e.toString());
+      // debugPrint(e.toString());
     }
     return null;
   }
@@ -101,8 +106,9 @@ class GeneralServices {
   }
 
   Future<bool> isCurrentAppLatest() async {
+    if (packageName.isEmpty) throw Exception('packageName is empty');
     if (version.isEmpty) {
-      throw Exception('`await GeneralServices.instance.init()`');
+      throw Exception('set `await GeneralServices.instance.init()`');
     }
     try {
       final app = await getReleaseAppLatest();
@@ -112,12 +118,13 @@ class GeneralServices {
         return false;
       }
     } catch (e) {
-      debugPrint(e.toString());
+      // debugPrint(e.toString());
     }
     return true;
   }
 
   Future<ReleaseModel?> getCurrentRelease() async {
+    if (packageName.isEmpty) throw Exception('packageName is empty');
     try {
       final list = await getReleaseList();
       for (var release in list) {

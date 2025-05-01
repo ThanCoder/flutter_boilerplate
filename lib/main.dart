@@ -12,7 +12,7 @@ void main() async {
   //init config
   await initAppConfigService();
 
-  await GeneralServices.instance.init();
+  await GeneralServices.instance.init(packageName: 'flutter_boilerplate');
 
   runApp(const MyApp());
 }

@@ -30,10 +30,16 @@ class MyImageFile extends StatelessWidget {
         fit: fit,
         width: width,
         height: height,
-        errorBuilder: (context, error, stackTrace) => Image.asset(
-          defaultAssetsPath,
-          fit: fit,
-        ),
+        errorBuilder: (context, error, stackTrace) {
+          if (file.existsSync()) {
+            file.deleteSync();
+          }
+
+          return Image.asset(
+            defaultAssetsPath,
+            fit: fit,
+          );
+        },
       );
     } else {
       return Image.asset(
@@ -45,12 +51,9 @@ class MyImageFile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (borderRadius > 0) {
-      return ClipRRect(
-        borderRadius: BorderRadius.circular(borderRadius),
-        child: _getImageWidget(),
-      );
-    }
-    return _getImageWidget();
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(borderRadius),
+      child: _getImageWidget(),
+    );
   }
 }

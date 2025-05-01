@@ -50,9 +50,21 @@ class HtmlDomServices {
   static String getNewLine(String html, {String replacer = '\n'}) {
     var res = '';
 
-    res = html.replaceAll(RegExp(r'<[^/][^>]*>'), ''); // opening tag remove
+    res = html.replaceAll(RegExp(r'<[^/][^>]*>'), replacer); // opening tag remove
     res = res.replaceAll(RegExp(r'</[^>]+>'), replacer); // closing tag -> \n
 
     return res.trim();
+  }
+  
+   static String cleanScriptTag(String html) {
+    final cleaned = html.replaceAll(
+        RegExp(r'<script[^>]*?>[\s\S]*?<\/script>', caseSensitive: false), '');
+    return cleaned;
+  }
+
+  static String cleanStyleTag(String html) {
+    final cleaned = html.replaceAll(
+        RegExp(r'<style[^>]*?>[\s\S]*?<\/style>', caseSensitive: false), '');
+    return cleaned;
   }
 }
